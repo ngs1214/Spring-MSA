@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: service-user
+  profiles:
+    active: dev
+  config:
+    import:
+      - "optional:configserver: http://username:password@localhost:9000"
+
+#eureka:
+#  client:
+#    register-with-eureka: true
+#    fetch-registry: true
+#    service-url:
+#      defaultZone: http://username:password@localhost:8761/eureka
