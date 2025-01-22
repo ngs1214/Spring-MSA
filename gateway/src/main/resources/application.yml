@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        # 라우팅 규칙의 고유 식별자
+        - id: first_route
+          # 대상 서비스 (백엔드 서비스의 주소)
+          uri: http://localhost:8082
+          predicates:
+            # /admin/** 경로로 들어오는 요청을 이 서비스로 라우팅
+            - Path=/admin/**
+        - id: second_route
+          uri: http://localhost:8081  # 다른 백엔드 서비스
+          predicates:
+            - Path=/users/**  # /user/** 경로로 들어오는 요청을 이 서비스로 라우팅
