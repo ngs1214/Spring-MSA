@@ -8,6 +8,14 @@ spring:
         - id: first_route
           # 대상 서비스 (백엔드 서비스의 주소)
           uri: lb://service-admin
+          filters:
+            - name: CustomRouteFilter
+              # 인자 값 넣기
+              args:
+                headerName: X-Dynamic-Header
+                headerValue: DynamicValue
+                pre: true
+                post: false
           predicates:
             # /admin/** 경로로 들어오는 요청을 이 서비스로 라우팅
             - Path=/admin/**
